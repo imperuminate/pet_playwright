@@ -8,4 +8,5 @@ def test_valid_creds(login_page):
     login_page.open()
     login_page.enter_email('test@gmail.com')
     login_page.enter_password('123456qa')
+    login_page.click_submit_button()
     login_page.check_error_message(error_message)

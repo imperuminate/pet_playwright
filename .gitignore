@@ -1,8 +1,8 @@
-creds.py
-.env
 venv
-pycache
+__pycache__
+.pytest_cache
+.vscode
 ***allure-results
 ***allure-report
 .DS_Store
-README.md
+
