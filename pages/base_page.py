@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, Locator
+from playwright.sync_api import Page, Locator, expect
 import allure
 
 
@@ -9,6 +9,7 @@ class BasePage:
 
     def __init__(self, page: Page):
         self.page = page
+    
 
 
     @allure.step('Open the page')
@@ -20,5 +21,5 @@ class BasePage:
         
 
     @allure.step('Find element by locator')
-    def find(self, locator) -> Locator:
+    def find_locator(self, locator) -> Locator:
         return self.page.locator(locator)
