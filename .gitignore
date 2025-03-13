@@ -1,6 +1,7 @@
 creds.py
 .env
-__pycache__/
+venv
+pycache
 ***allure-results
 ***allure-report
 .DS_Store
