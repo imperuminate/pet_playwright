@@ -4,3 +4,4 @@
 `pip install allure-pytest`
 `pip install pytest-playwright`
 `playwright install`
+test
