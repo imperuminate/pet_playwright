@@ -1,3 +1,4 @@
+import re
 import allure
 from playwright.sync_api import expect
 from pages.base_page import BasePage
@@ -5,7 +6,7 @@ from time import sleep
 
 
 class LoginPage(BasePage):
-    page_url = '/customer/account/login '
+    page_url = 'customer/account/login '
 
 
     @allure.step('Enter email')
@@ -16,16 +17,17 @@ class LoginPage(BasePage):
 
     @allure.step('Enter password')
     def enter_password(self, password):
-        password_field = self.find_locator('#pass')
+        password_field = self.page.get_by_label('Password')
         password_field.fill(password) 
 
  
     @allure.step('Click submit button')
     def click_submit_button(self):
-        self.find_locator('#send2').click()
+        self.page.get_by_role('button', name='Sign In').click()
 
-    
-    @allure.step('Check error message')
-    def check_error_message(self, message):
-        error_message = self.find_locator('.message-error')
-        expect(error_message).to_have_text(message)
+
+    @allure.step('Check message')
+    def check_message(self, message):
+        expect(self.page).to_have_url(re.compile('login')) 
+        alert_message = self.find_locator('[data-bind*="html: $parent"]').first
+        expect(alert_message).to_have_text(message)
